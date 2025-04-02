@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="Index.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="Index.html"><img src="Icono.webp" alt="Logo" height="60"></a></div>
+        <ul class="nav-links">
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Carrito</a></li>
+            <li><a href="#">Cuenta</a></li>
+        </ul>
+    </nav>
+    <div class="carousel-container">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+        <div class="carousel">
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Producto 1">
+                <h3>Producto 1</h3>
+                <p>$100.00</p>
+                <button>Comprar</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Producto 2">
+                <h3>Producto 2</h3>
+                <p>$120.00</p>
+                <button>Comprar</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Producto 3">
+                <h3>Producto 3</h3>
+                <p>$90.00</p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+    </div>
+    <script>
+        let index = 0;
+        function moveCarousel(direction) {
+            const carousel = document.querySelector(".carousel");
+            const items = document.querySelectorAll(".product");
+            const totalItems = items.length;
+            const itemWidth = items[0].offsetWidth + 20;
+            index += direction;
+            if (index < 0) index = totalItems - 1;
+            if (index >= totalItems) index = 0;
+            carousel.style.transform = `translateX(${-index * itemWidth}px)`;
+        }
+    </script>
+</body>
+</html>
